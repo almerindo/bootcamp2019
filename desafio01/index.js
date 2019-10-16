@@ -7,22 +7,15 @@ var projects = [];
 
 //Return -1 if not exist
 function exist(id){
-  let index = -1;
-  let ok = false;
   
-  //FIXME - Está retornando o index errado quando o array está fora de ordem.
-  projects.map((project)=>{
-    index++;
+  for (let i = 0; i < projects.length; i++) {
+    const project = projects[i];
     if (project.id === id){
-      ok = true;
-      return;
+      
+      return i;
     }
-  })
-
-  if (ok){
-    return index;
   }
-  
+
   return -1;
 }
 
