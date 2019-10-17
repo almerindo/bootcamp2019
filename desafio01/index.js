@@ -37,7 +37,7 @@ function mdlCheckProject(req, res, next) {
 
 
 //Middleware LOG - Store the KEY ( METHOD:${req.method} ->  URL:${req.url} )  
-//and VALUE () on MAPTABLE
+//and VALUE (count , timeAverage) on MAPTABLE
 function mdlLog(req, res, next) {
   var start = Date.now();
   
