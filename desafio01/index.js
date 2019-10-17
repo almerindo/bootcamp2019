@@ -6,12 +6,9 @@ server.use(mdlLog);
 //{ id: "1", title: 'Novo projeto', tasks: [] };
 var projects = [];
 
-const reqLog = [
-                {"method":"GET", "count": 0, "timeAverage": 0}, 
-                {"method":"PUT", "count": 0, "timeAverage": 0}, 
-                {"method":"POST", "count": 0, "timeAverage": 0}, 
-                {"method":"DELETE", "count": 0, "timeAverage": 0}
-              ]
+
+const reqLog = new Map(); 
+                              
               
 
 //Return -1 if not exist
@@ -39,23 +36,34 @@ function mdlCheckProject(req, res, next) {
 }
 
 
-//FIXME Não está retornando o TEMPO e não está armazenando corretamente os valores
+//Middleware LOG - Store the KEY ( METHOD:${req.method} ->  URL:${req.url} )  
+//and VALUE () on MAPTABLE
 function mdlLog(req, res, next) {
-  var start = time.now();
+  var start = Date.now();
+  
+  let keyLog = `METHOD:${req.method} ->  URL:${req.url}`
 
   next();
   
-  var end = time.now();
-  var time = end - start;
+  var time = Date.now() - start;
 
+  let objLog = reqLog.get(keyLog);
+  if (objLog){
+    objLog.count++;
+    objLog.timeAverage =  (objLog.timeAverage + time)/objLog.count;  
+  }else{
+    //IF FIRST TIME
+    reqLog.set(keyLog,{"count": 1, "timeAverage": time});
+  }
   
-  index = 0;
-  reqLog[index].count++;
-  reqLog[index].timeAverage = (reqLog[index].timeAverage + time)/reqLog[index].count;  
-
-  console.log(reqLog);
 }
 
+
+
+//GET logs 
+server.get('/logs', (req, res) => {
+  return res.json(Array.from(reqLog));
+});
 
 
 
