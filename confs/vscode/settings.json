@@ -1,0 +1,42 @@
+{
+    "terminal.integrated.shell.osx": "/bin/zsh",
+
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "workbench.colorTheme": "Dracula",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.rulers":[80,120],
+    "editor.renderLineHighlight": "gutter",
+    "editor.tabSize": 2,
+    "terminal.integrated.fontSize": 14,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+    },
+    "emmet.syntaxProfiles": {
+      "javascript": "jsx"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "editor.parameterHints.enabled": false,
+    "breadcrumbs.enabled": true,
+    "javascript.suggest.autoImports": false,
+
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+          
+            "background": "blue",
+            "foreground": "black",
+            "iconColour": "blue"
+        },
+        "FIXME": {
+            "background": "yellow",
+            "foreground": "black",
+            "iconColour": "yellow"
+        }
+    },
+    "workbench.startupEditor": "newUntitledFile"
+    
+}
