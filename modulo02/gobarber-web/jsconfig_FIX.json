@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "~/*": ["*"],
+    }
+  }
+}
+//FIX Resolver problemas com jsconfig.json- Não dá yarn start
+
